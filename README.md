@@ -18,7 +18,7 @@ TestAutomationAgent is a powerful VSCode plugin that revolutionizes API testing 
 
 ## 🎥 Demo
 📹 [Video Demo](https://github.com/ewfx/catfe-maverick/tree/main/artifacts/demo) 
-🖼️ Screenshots: NA
+🖼️ [Presentation](https://github.com/ewfx/catfe-maverick/tree/main/artifacts/arch) 
 
 ## 💡 Inspiration
 Modern API testing often requires significant manual effort for scenario creation, test case writing, execution, and coverage analysis. We recognized that this process could be dramatically improved through AI automation. TestAutomationAgent was inspired by the need to reduce the time and expertise barriers in API testing while improving test coverage and reliability.
@@ -30,8 +30,8 @@ TestAutomationAgent offers end-to-end API testing automation with these key feat
 - **AI-Powered BDD Test Case Creation**: Transform scenarios into executable Karate BDD test cases
 - **AI-Powered Test Execution**: Run tests against configurable environments with real-time monitoring
 - **AI-Powered Coverage Analysis**: Integrate with Karate Reports and JaCoCo to analyze test results and identify coverage gaps
-- **Intelligent Remediation**: Automatically generate fixes for failing tests with AI assistance
-- **Plan/Act Architecture**: Unique dual-mode operation where the AI plans testing approaches for user approval, then executes them
+- **Intelligent Remediation**: Automatically generate fixes for failing tests with AI assistance (Future)
+- **Plan/Act Architecture**: Unique dual-mode operation where the AI plans testing approaches for user approval, then executes them (Future)
 
 ## 🛠️ How We Built It
 TestAutomationAgent employs a modular architecture with several interconnected components:
@@ -47,7 +47,7 @@ The plugin leverages advanced AI capabilities through integration with OpenAI an
 ## 🚧 Challenges We Faced
 Building TestAutomationAgent presented several technical and conceptual challenges:
 
-1. **LLM Prompt Engineering**: Crafting precise prompts for consistent BDD scenario generation from varied inputs (JIRA, specs)
+1. **LLM Prompt Engineering**: Crafting precise prompts for consistent BDD scenario generation from varied inputs (specs, reports, scenarios etc.)
 2. **Scenario Relevance & Accuracy**: Ensuring generated tests match real application behavior and requirements
 3. **Cross-Source Coverage Mapping**: Merging JaCoCo, Karate reports, OpenAPI specs, and business requirements to identify coverage gaps
 4. **Dynamic Test Gap Analysis**: Detecting missing test areas using AI from cross-analyzed data (test execution + business logic)
