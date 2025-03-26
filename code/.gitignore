@@ -7,26 +7,14 @@ out/
 *.vsix
 .vscode-test/
 
-# Build outputs
-lib/
-build/
-*.js
-*.js.map
-
 # Logs
-logs
+logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Runtime data
-pids
-*.pid
-*.seed
-*.pid.lock
-
-# Coverage directory used by tools like istanbul
+# Test output
 .nyc_output/
 
 # Environment files
@@ -36,17 +24,22 @@ pids
 
 # OS specific files
 .DS_Store
-.DS_Store?
-._*
 .Spotlight-V100
 .Trashes
 ehthumbs.db
 Thumbs.db
 
-# Editor directories and files
+# Editor directories
 .idea/
-/code/v.scode/*
-!/code/.vscode/settings.json
-!/code/.vscode/tasks.json
-!/code/.vscode/launch.json
-!/code/.vscode/extensions.json
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Temp files
+*.tmp
+
+# Compiled JavaScript and source maps (except specific files you want to keep)
+**/*.js
+**/*.js.map
