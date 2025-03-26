@@ -1,0 +1,200 @@
+{
+  "name": "testautomationagent",
+  "displayName": "TestAutomationAgent",
+  "description": "Test Scenario Generation, Testcase Generation, Testcase Execution, Testcase Coverage Optimization",
+  "version": "0.0.1",
+  "publisher": "TeamMaverick",
+  "engines": {
+    "vscode": "^1.98.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/example/testautomationagent"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "testautomationagent.importRequirements",
+        "title": "TestAutomationAgent: Import Requirements"
+      },
+      {
+        "command": "testautomationagent.generateScenarios",
+        "title": "TestAutomationAgent: Generate Test Scenarios"
+      },
+      {
+        "command": "testautomationagent.generateTestCases",
+        "title": "TestAutomationAgent: Generate BDD Test Cases"
+      },
+      {
+        "command": "testautomationagent.executeTests",
+        "title": "TestAutomationAgent: Execute Tests"
+      },
+      {
+        "command": "testautomationagent.analyzeCoverage",
+        "title": "TestAutomationAgent: Analyze Test Coverage"
+      },
+      {
+        "command": "testautomationagent.suggestRemediation",
+        "title": "TestAutomationAgent: Suggest Remediation"
+      },
+      {
+        "command": "testautomationagent.applyRemediation",
+        "title": "TestAutomationAgent: Apply Remediation"
+      },
+      {
+        "command": "testautomationagent.togglePlanActMode",
+        "title": "TestAutomationAgent: Toggle Plan/Act Mode"
+      },
+      {
+        "command": "testautomationagent.createFile",
+        "title": "TestAutomationAgent: Create File"
+      },
+      {
+        "command": "testautomationagent.executeCommand",
+        "title": "TestAutomationAgent: Execute Command"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "testautomationagent",
+          "title": "Test Automation Agent",
+          "icon": "resources/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "testautomationagent": [
+        {
+          "id": "testautomationagent.scenarioView",
+          "name": "Test Scenarios"
+        },
+        {
+          "id": "testautomationagent.testCaseView",
+          "name": "BDD Test Cases"
+        },
+        {
+          "id": "testautomationagent.executionView",
+          "name": "Test Execution"
+        },
+        {
+          "id": "testautomationagent.coverageView",
+          "name": "Coverage Analysis"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Test Automation Agent",
+      "properties": {
+        "testAutomationAgent.aiProvider": {
+          "type": "string",
+          "enum": [
+            "openai",
+            "claude"
+          ],
+          "default": "openai",
+          "description": "AI provider configuration"
+        },
+        "testAutomationAgent.aiModel": {
+          "type": "string",
+          "default": "gpt-4o",
+          "description": "Model selection for AI provider"
+        },
+        "testAutomationAgent.apiKeys": {
+          "type": "object",
+          "default": {
+            "openai": ""
+          },
+          "description": "API keys for different providers"
+        },
+        "testAutomationAgent.planActMode": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable/disable Plan/Act architecture"
+        },
+        "testAutomationAgent.testEnvironments": {
+          "type": "object",
+          "default": {
+            "dev": {
+              "baseUrl": "https://payment-microservice-a65j.onrender.com",
+              "apiKey": "",
+              "timeoutMs": 5000
+            }
+          },
+          "description": "Test environment configurations"
+        },
+        "testAutomationAgent.karatePath": {
+          "type": "string",
+          "default": "${workspaceFolder}/karate.jar",
+          "description": "Path to Karate BDD installation"
+        },
+        "testAutomationAgent.allureReportPath": {
+          "type": "string",
+          "default": "${workspaceFolder}/target",
+          "description": "Path to Allure reports"
+        },
+        "testAutomationAgent.jacocoReportPath": {
+          "type": "string",
+          "default": "${workspaceFolder}/target",
+          "description": "Path to JaCoCo reports"
+        },
+        "testAutomationAgent.requireApproval": {
+          "type": "boolean",
+          "default": true,
+          "description": "Flag to require approval for code changes"
+        },
+        "testAutomationAgent.mcpIntegration": {
+          "type": "object",
+          "default": {},
+          "description": "MCP tool configuration settings"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "npm run check-types && npm run lint && node esbuild.js",
+    "watch": "npm-run-all -p watch:*",
+    "watch:esbuild": "node esbuild.js --watch",
+    "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
+    "package": "npm run check-types && npm run lint && node esbuild.js --production",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "check-types": "tsc",
+    "lint": "eslint src",
+    "test": "node ./test-runner.js all",
+    "test:unit": "node ./test-runner.js unit",
+    "test:integration": "node ./test-runner.js integration",
+    "test:verify": "node ./verify-tests.js",
+    "test:direct": "node ./direct-test-runner.js all",
+    "test:direct:unit": "node ./direct-test-runner.js unit",
+    "test:direct:integration": "node ./direct-test-runner.js integration",
+    "package-extension": "node ./package-extension.js",
+    "package-vsix": "node ./package-vsix.js"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@types/sinon": "^17.0.4",
+    "@types/vscode": "^1.98.0",
+    "@typescript-eslint/eslint-plugin": "^8.25.0",
+    "@typescript-eslint/parser": "^8.25.0",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1",
+    "esbuild": "^0.25.0",
+    "eslint": "^9.21.0",
+    "npm-run-all": "^4.1.5",
+    "sinon": "^19.0.4",
+    "typescript": "^5.7.3"
+  },
+  "dependencies": {
+    "axios": "^1.8.4",
+    "xml2js": "^0.6.2"
+  }
+}
