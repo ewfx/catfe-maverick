@@ -37,11 +37,11 @@ Thumbs.db
 !.vscode/launch.json
 !.vscode/extensions.json
 
-# Large media files
-*.mp4
-*.mov
-*.avi
-*.mkv
+# Large media files - exclude specifically
+artifacts/demo/*.mp4
+artifacts/demo/*.mov
+artifacts/demo/*.avi
+artifacts/demo/*.mkv
 
 # Temp files
 *.tmp
@@ -49,3 +49,6 @@ Thumbs.db
 # Generated JavaScript files and source maps from TypeScript
 code/**/*.js
 code/**/*.js.map
+
+# VSCode test binaries
+code/.vscode-test/
